@@ -166,6 +166,21 @@ SECTIONS
     . = ALIGN(8);
   } >RAM_D1
 
+  /* Modification start */
+  /* ETH_CODE: add placement of DMA descriptors and RX buffers */
+  .lwip_sec (NOLOAD) :
+  {
+    . = ABSOLUTE(0x30000000);
+    *(.RxDecripSection)
+
+    . = ABSOLUTE(0x30000080);
+    *(.TxDecripSection)
+
+    . = ABSOLUTE(0x30000100);
+    *(.Rx_PoolSection)
+  } >RAM_D2
+  /* Modification end */
+
   /* Remove information from the standard libraries */
   /DISCARD/ :
   {
