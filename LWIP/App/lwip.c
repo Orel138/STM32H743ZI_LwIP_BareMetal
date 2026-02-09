@@ -59,8 +59,9 @@ ip6_addr_t ip6addr;
 static void mdns_txt_callback(struct mdns_service *service,
                               void *txt_userdata)
 {
-	mdns_resp_add_service_txtitem(service, "fw=1.0.3", sizeof("fw=1.0.3"));
+	mdns_resp_add_service_txtitem(service, "fw=1.0.2", sizeof("fw=1.0.2"));
 	mdns_resp_add_service_txtitem(service, "auth=false", sizeof("auth=false"));
+	mdns_resp_add_service_txtitem(service, "board=NUCLEO-H743ZI", sizeof("board=NUCLEO-H743ZI"));
 }
 
 /* USER CODE END 2 */
