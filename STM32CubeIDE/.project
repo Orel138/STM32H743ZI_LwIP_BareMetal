@@ -387,6 +387,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/Third_Party/LwIP/src/netif/ppp/magic.c</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/LwIP/mdns.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/Third_Party/LwIP/src/apps/mdns/mdns.c</locationURI>
+		</link>
+		<link>
 			<name>Middlewares/LwIP/mem.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/Third_Party/LwIP/src/core/mem.c</locationURI>

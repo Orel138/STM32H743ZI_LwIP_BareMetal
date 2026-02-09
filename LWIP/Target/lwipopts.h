@@ -49,6 +49,8 @@
 /* Parameters set in STM32CubeMX LwIP Configuration GUI -*/
 /*----- Default value in ETH configuration GUI in CubeMx: 1524 -----*/
 #define ETH_RX_BUFFER_SIZE 1536
+/*----- Default Value for LWIP_IGMP: 0 ---*/
+#define LWIP_IGMP 1
 /*----- Value in opt.h for NO_SYS: 0 -----*/
 #define NO_SYS 1
 /*----- Value in opt.h for SYS_LIGHTWEIGHT_PROT: 1 -----*/
@@ -73,16 +75,30 @@
 #define TCP_SNDQUEUELOWAT 5
 /*----- Value in opt.h for TCP_WND_UPDATE_THRESHOLD: LWIP_MIN(TCP_WND/4, TCP_MSS*4) -----*/
 #define TCP_WND_UPDATE_THRESHOLD 536
+/*----- Default Value for LWIP_NETIF_HOSTNAME: 0 ---*/
+#define LWIP_NETIF_HOSTNAME 1
+/*----- Default Value for LWIP_NETIF_HOSTNAME_NAME: lwip ---*/
+#define LWIP_NETIF_HOSTNAME_NAME stm32
 /*----- Value in opt.h for LWIP_NETIF_LINK_CALLBACK: 0 -----*/
 #define LWIP_NETIF_LINK_CALLBACK 1
 /*----- Default Value for LWIP_NETIF_REMOVE_CALLBACK: 0 ---*/
 #define LWIP_NETIF_REMOVE_CALLBACK 1
+/*----- Default Value for LWIP_NUM_NETIF_CLIENT_DATA: 0 ---*/
+#define LWIP_NUM_NETIF_CLIENT_DATA 1
 /*----- Value in opt.h for LWIP_NETCONN: 1 -----*/
 #define LWIP_NETCONN 0
 /*----- Value in opt.h for LWIP_SOCKET: 1 -----*/
 #define LWIP_SOCKET 0
 /*----- Value in opt.h for RECV_BUFSIZE_DEFAULT: INT_MAX -----*/
 #define RECV_BUFSIZE_DEFAULT 2000000000
+/*----- Default Value for LWIP_IPV6: 0 ---*/
+#define LWIP_IPV6 1
+/*----- Default Value for LWIP_MDNS: 0 ---*/
+#define LWIP_MDNS 1
+/*----- Default Value for LWIP_MDNS_RESPONDER: 0 ---*/
+#define LWIP_MDNS_RESPONDER 1
+/*----- Default Value for MDNS_MAX_SERVICES: 0 ---*/
+#define MDNS_MAX_SERVICES 1
 /*----- Value in opt.h for LWIP_STATS: 1 -----*/
 #define LWIP_STATS 0
 /*----- Value in opt.h for CHECKSUM_GEN_IP: 1 -----*/

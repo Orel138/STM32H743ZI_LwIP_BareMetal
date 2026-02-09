@@ -28,6 +28,7 @@
 #include "ethernetif.h"
 
 /* USER CODE BEGIN 0 */
+#include "mdns.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,8 +52,16 @@ ip4_addr_t gw;
 uint8_t IP_ADDRESS[4];
 uint8_t NETMASK_ADDRESS[4];
 uint8_t GATEWAY_ADDRESS[4];
+ip6_addr_t ip6addr;
 
 /* USER CODE BEGIN 2 */
+
+static void mdns_txt_callback(struct mdns_service *service,
+                              void *txt_userdata)
+{
+	mdns_resp_add_service_txtitem(service, "fw=1.0.3", sizeof("fw=1.0.3"));
+	mdns_resp_add_service_txtitem(service, "auth=false", sizeof("auth=false"));
+}
 
 /* USER CODE END 2 */
 
@@ -89,6 +98,11 @@ void MX_LWIP_Init(void)
   /* add the network interface (IPv4/IPv6) without RTOS */
   netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &ethernet_input);
 
+  /* Create IPv6 local address */
+  netif_create_ip6_linklocal_address(&gnetif, 0);
+  netif_ip6_addr_set_state(&gnetif, 0, IP6_ADDR_VALID);
+  gnetif.ip6_autoconfig_enabled = 1;
+
   /* Registers the default network interface */
   netif_set_default(&gnetif);
 
@@ -99,6 +113,19 @@ void MX_LWIP_Init(void)
   netif_set_link_callback(&gnetif, ethernet_link_status_updated);
 
 /* USER CODE BEGIN 3 */
+  netif_set_hostname(&gnetif, "stm32");
+
+  mdns_resp_init();
+  mdns_resp_add_netif(&gnetif, "stm32", 3600);
+
+  mdns_resp_add_service(&gnetif,
+						"STM32 Nucleo-H743ZI demo mDNS",
+						"_http",
+						DNSSD_PROTO_TCP,
+						80, /* port */
+						3600,
+						mdns_txt_callback,
+						NULL);
 
 /* USER CODE END 3 */
 }
